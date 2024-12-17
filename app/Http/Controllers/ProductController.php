@@ -10,7 +10,7 @@ class ProductController extends Controller
     public function index()
     {
         $products = Product::all();
-        return response()->json($products);
+        return response()->json($products, 200);
     }
 
     // Tambah produk baru
@@ -60,6 +60,7 @@ class ProductController extends Controller
     public function destroy(Product $product)
     {
         $product->delete();
-        return response()->json(null, 204);
+        // do right return and return statsu code
+        return response()->json(['message' => 'Produk berhasil dihapus'], 204);
     }
 }
